@@ -177,7 +177,7 @@ tk定义在边上的特征函数，称为转移特征，依赖于当前和前一
 
 由于Word2Vec是分布式表示：分布式表示的假说在于：上下文相似的词，其寓意也相似。基于神经网络的分布表示称为word Embedding。Word2Vec是其中一种word Embedding.提出了一种更快更好的方法来训练语言模型。
 
-在中文分完词之后，其实要做的剩下的工作和英文是一样的，即将word向量化的表示。在这里采用的的是业界广泛用的Word2Vec，算半监督学习，虽然在训练的过程中有标注，但是这个标注会因为选用的语料变化而改变，不是一个ground truth。_窗口设置一般是5，而且是左右随机1-5的大小，是均匀分布。随机窗口比固定窗口效果要好，增加随机性。负采样很重要，一般设置是10左右，如果更大会有小量的提升_
+在中文分完词之后，其实要做的剩下的工作和英文是一样的，即将word向量化的表示。在这里采用的的是业界广泛用的Word2Vec，算半监督学习，虽然在训练的过程中有标注，但是这个标注会因为选用的语料变化而改变，不是一个ground truth。_窗口设置一般是5，而且是左右随机1-5的大小，是均匀分布。随机窗口比固定窗口效果要好，增加随机性。负采样很重要，一般设置是10左右，如果更大会有小量的提升。fasttext构建的词向量对于未登陆词更友好，因为采用了n-gram的方式来刻画这个词，所以对新词相对来说更好。
 
 无监督学习，没有grand truth，不需要先验只是。
 
@@ -705,7 +705,17 @@ column\_name, dimension, default\_value处理缺失值的方法, dtype定义值�
 
 5.  tf.contrib.learn.io.read\_batch\_features用于读取文件并以规定类型存储
 
-   file\_pattern, 文件存放路径 batch\_size, 128 features, 即3中产生的feature， reader,  tf.TFRecordReader， randomize\_input=True, num\_epochs=None,指定读取数据集的次数 queue\_capacity=10000,  Capacity for input queue， feature\_queue\_capacity=100, reader\_num\_threads=1, num\_enqueue\_threads=2, parse\_fn=None, name=None,操作结果的名称  read\_batch\_size=None
+   file\_pattern,
+ 文件存放路径 batch\_size,
+ 128 features,
+ 即3中产生的feature， reader,  tf.TFRecordReader， randomize\_input=True,
+ num\_epochs=None,
+指定读取数据集的次数 queue\_capacity=10000,
+  Capacity for input queue， feature\_queue\_capacity=100,
+ reader\_num\_threads=1,
+ num\_enqueue\_threads=2,
+ parse\_fn=None,
+ name=None,操作结果的名称  read\_batch\_size=None
 
 Adds operations to read, queue, batch and parse Example protos.
 
@@ -715,7 +725,14 @@ embedding的词向量和对应的索引id作为参数输入
 
 7. tf.nn.dynamic\_rnn
 
-参数：1. cell,实际作用的小cell对象，可以是GRU，LSTM     2.inputs, has a shape of \(`batch_size, max_time, input_size)` in which max\_time is the number of steps in the longest sequence \(but all sequences could be of the same length\)   3.sequence\_length=None, 是batch\_size大小的向量，其中每个元素给出批处理中每个序列的长度（如果所有序列的大小相同，则将其保留为默认值）。该参数是定义单元展开大小的参数。 initial\_state=None,  dtype=None,   parallel\_iterations=None,   swap\_memory=False, time\_major=False,  scope=None
+参数：1. cell,实际作用的小cell
+对象，可以是GRU，LSTM     2.inputs,
+ has a shape of \(`batch_size, max_time, input_size)` in which max\_time is the number of steps in the longest sequence \(but all sequences could be of the same length\)   3.sequence\_length=None,
+ 是batch\_size大小的向量，其中每个元素给出批处理中每个序列的长度（如果所有序列的大小相同，则将其保留为默认值）。该参数是定义单元展开大小的参数。 initial\_state=None,
+  dtype=None,
+   parallel\_iterations=None,   swap\_memory=False,
+ time\_major=False,
+  scope=None
 
 return  outputs, last\_states  第一个是每个step的输出值，第二个是最终的状态
 
