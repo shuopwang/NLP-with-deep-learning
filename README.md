@@ -153,6 +153,7 @@ MEMM当前隐藏状态 ![i\_{i}](https://www.zhihu.com/equation?tex=i_%7Bi%7D) �
 ### CRF
 
 广义的CRF的定义是： 满足P\(Yv\|X,Yw,w≠v\)=P\(Yv\|X,Yw,w∼v\)的马尔科夫随机场叫做条件随机场（CRF）
+CRF通过定义条件条件概率P(Y|X)，而不是联合概率分布P(X,Y)来描述模型。
 
 ![c&#x4EE3;&#x8868;&#x65E0;&#x5411;&#x56FE;&#x4E2D;&#x7684;&#x6210;&#x56E2;&#x4E2A;&#x6570;](.gitbook/assets/image%20%282%29.png)
 
