@@ -193,7 +193,9 @@ tk定义在边上的特征函数，称为转移特征，依赖于当前和前一
 在word2vec中有两个算法：
 
 * Skip-grams \(SG\)：预测上下文
+利用input的one-hot表示*权重矩阵得到的中间向量即为这个词的词向量
 * Continuous Bag of Words \(CBOW\)：预测目标单词
+用CBOW训练的词向量公式就应该是transpose(W)*context的one-hot之后求和的平均
 
 两种稍微高效一些的训练方法：
 
@@ -207,8 +209,6 @@ tk定义在边上的特征函数，称为转移特征，依赖于当前和前一
 Cbow是利用context来预测中心词，SG是通过中心词来预测上下文
 
 ### CBOW
-
-h=1/C*W*(sum one_hot vector)
 
 ![goal function of CBOW&#xFF0C;&#x8FD9;&#x4E2A;goal function&#x662F;&#x9488;&#x5BF9;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;word&#x7684;&#x603B;goal](.gitbook/assets/6cbb8645gw1f5tocs4lykj20fa03aaa8.jpg)
 
