@@ -208,7 +208,7 @@ Cbow是利用context来预测中心词，SG是通过中心词来预测上下文
 
 ### CBOW
 
-
+h=1/C*W*(sum one_hot vector)
 
 ![goal function of CBOW&#xFF0C;&#x8FD9;&#x4E2A;goal function&#x662F;&#x9488;&#x5BF9;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;word&#x7684;&#x603B;goal](.gitbook/assets/6cbb8645gw1f5tocs4lykj20fa03aaa8.jpg)
 
