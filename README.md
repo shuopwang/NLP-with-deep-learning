@@ -243,6 +243,8 @@ CEH\(p,q\)=-\(P\(x=0\)logQ\(x=0\)+P\(x=1\)logQ\(x=1\)\)
 真实的类标签可以看作是分布，对某个样本属于哪个类别可以用One-hot的编码方式，是一个维度为C的向量，比如在5个类别的分类中，`[0, 1, 0, 0, 0]`表示该样本属于第二个类，其概率值为1。我们把真实的类标签分布记为p，该分布中，ti=1当i属于它的真实类别c  
 CEH\(p,q\)=−∑ label\(x\)log⁡q\(x\)
 
+两者的公式是等价的无非是因为在多分类的问题上label是one-hot的形式，而在binary的问题上利用数值的形式。
+
 意义：
 
 1.交叉熵本身可以衡量模型分布和真实分布的相似程度
@@ -864,3 +866,22 @@ multilabel:相当于在最后一个隐藏层上加上一个\(number\_of\_categol
 
 1.Preparation 2.Entity Recognition命名实体识别 3. Entity Disambiguation 4.Instance Extraction对实体进行打标签5.Fact extaction 6.Ie by reasoning
 
+### Python 多进程与多线程
+多进程：
+multiprocessing import Process
+传入function和function用到的参数
+start()启动执行函数
+join()等待子进程结束后再继续往下运行，通常用于进程间的同步。
+启动大量子进程通过进程池的方法，调用join()之前必须先调用close(). Pool有默认执行多少个进程的数目大小
+
+多线程：
+import threading
+传入函数，并创建相应的thread实例，然后调用start()开始执行。多进程中同一个变量各自拷贝再每个进程中，互不影响。多线程中，所有变量有所有线程共享。给线程一个线程锁就可以保证同一个时刻最多只有一个线程持有锁，不会造成修改的冲突。
+threading.lock()
+#只有一个线程可以获取锁
+lock.acquire()
+try:
+...
+finally:
+#修改完成之后释放锁
+lock.release()
