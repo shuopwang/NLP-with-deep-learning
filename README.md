@@ -755,7 +755,8 @@ tf.squeeze\(input, squeeze\_dims=None, name=None\)Removes dimensions of size 1 f
 
 ## 9. paper
 
-1.加权bog of words, 去除first components以表示句向量
+1.加权bog of words, 去除first components以表示句向量。其背后的概率学解释如下假设P(w|s)=a*p(w)+(1-a)*exp(cs',w)／Z
+cs'=bc0+(1-b)s #其中c0为通常与语法有关的最频繁的话语的修正词，s即为w出现的矩阵向量。对这个式子做累乘并对其一节泰勒展开。式子就近似于其表达式，从而得到表达式。
 
 2.QA, question and answer都作为input，dual 结构， 共享第一层FC，tanh，共享第二层CNN，第三层各自池化+tanh，最终比较两者高维特征的cos distance
 
